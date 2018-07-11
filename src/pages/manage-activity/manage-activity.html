@@ -1,0 +1,28 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+        <ion-title align="center">Gerenciar atividades</ion-title>
+    </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+    <p *ngFor="let a of data">
+        <ion-item>
+            <ion-row>
+                <ion-col>
+                    <p>Nome: {{a.name}} </p>
+                    <p> Descrição: {{a.descricao}} </p>
+                    <p> Latitude: {{a.latitude}} </p>
+                    <p> Longitude: {{a.longitude}} </p>
+                </ion-col>
+                <ion-col>
+                    <button ion-button color="danger" (click)="delActivity(a.id)">delete</button>
+                    <button ion-button (click)="editActivityOn(a)">editar</button>
+                </ion-col>
+
+            </ion-row>
+        </ion-item>
+    </p>
+
+
+</ion-content>

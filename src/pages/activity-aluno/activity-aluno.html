@@ -1,0 +1,29 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title align="center">Atividade</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+  
+    <ion-list>
+      <ion-label color="primary">Encontre a Planta:</ion-label>
+      <ion-item>
+        
+          <p>Nome: {{name}} </p>
+          <p> Descrição: {{descricao}} </p>
+        
+      </ion-item>
+     
+    </ion-list>
+
+ 
+  <button ion-button  (click)="setLocation()" round outline>Verificar</button>
+
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title align="center">Editar atividade</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+  
+  <div>
+    <form [formGroup]="formActivity">
+      <ion-list>
+        <ion-item>
+          <ion-label color="primary" floating>Nome</ion-label>
+          <ion-input type="text" name="name" [(ngModel)]="name" formControlName="name"></ion-input>
+  
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" floating>Descrição</ion-label>
+          <ion-textarea name="descricao" [(ngModel)]="descricao" formControlName="descricao"></ion-textarea>
+        </ion-item>
+      </ion-list>
+      <button ion-button type="submit" color="danger"  (click)="setLocation()" round>Atualizar localização</button>
+    </form>
+    </div>
+    <button [disabled]="formActivity.invalid" ion-button type="submit" (click)="updateData()" round>Gravar</button>
+
+</ion-content>
