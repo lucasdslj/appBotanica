@@ -17,7 +17,8 @@ export class ActivityPage {
     public loadingCtrl: LoadingController, public alertCtrl: AlertController, public geolocation: Geolocation) {
     this.formActivity = formBuilder.group({
       name: ['', Validators.compose([Validators.maxLength(70),  Validators.required])],
-      descricao: ['', Validators.compose([Validators.minLength(6), Validators.required])]
+      descricao: ['', Validators.compose([Validators.minLength(6), Validators.required])],
+      dica: ['', Validators.compose([Validators.required])],
     });
   }
 
@@ -63,7 +64,7 @@ export class ActivityPage {
     alertBattle.present()
   }
 
-  setLocation(name, descricao) {
+  setLocation(name, descricao, dica) {
     let loading = this.loadingCtrl.create({
       spinner: 'dots',
       content: 'Coletando coordenadas'
@@ -83,7 +84,7 @@ export class ActivityPage {
       let lng = res.coords.longitude;
 
       loading.dismiss();
-      this.createNewActivity(name, descricao, lat, lng );
+      this.createNewActivity(name, descricao, dica, lat, lng );
 
 
     }).catch(() => {
@@ -95,9 +96,9 @@ export class ActivityPage {
   }
 
 
-  createNewActivity(name, descricao, latitude, longitude) {
+  createNewActivity(name, descricao, dica, latitude, longitude) {
     
-      this.http.post('http://tcc-andre.herokuapp.com/api/coord', { name, latitude, longitude, descricao }).toPromise().then(rs => {
+      this.http.post('http://tcc-andre.herokuapp.com/api/coord', { name, latitude, longitude, descricao , dica}).toPromise().then(rs => {
         this.alert('Atividade criada com sucesso', 'Aviso');
     });
   }

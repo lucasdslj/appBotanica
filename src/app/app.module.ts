@@ -22,7 +22,7 @@ import { HomeAlunoPage } from '../pages/home-aluno/home-aluno';
 import {FindActivityPage} from '../pages/find-activity/find-activity';
 import {ActivityAlunoPage} from '../pages/activity-aluno/activity-aluno';
 
-
+import { IonicStorageModule } from '@ionic/storage';
 
 import{TestPage} from '../pages/test/test';
 
@@ -44,7 +44,12 @@ import{TestPage} from '../pages/test/test';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+
+    IonicStorageModule.forRoot({
+      name: '__mydb',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

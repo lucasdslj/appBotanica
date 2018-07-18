@@ -12,7 +12,7 @@ import { LoginPage} from '../pages/login/login';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPage;
+  rootPage:any = LoginPage; //alterar
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
     private screenOrientation: ScreenOrientation, private androidPermissions: AndroidPermissions ) {
@@ -22,12 +22,12 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
 
-     this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
+     //this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
 
-      err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
-     );
+      //err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+     //);
 
-     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+     //this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
 
     });
 

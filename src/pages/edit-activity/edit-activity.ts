@@ -13,17 +13,20 @@ import { Geolocation } from '@ionic-native/geolocation';
 export class EditActivityPage {
   name:any;
   descricao:any;
+  dica:any;
   latitude:any;
   longitude:any;
   id:any;
   formActivity: any;
+  controlCoords =false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public formBuilder: FormBuilder,
     public loadingCtrl: LoadingController, public alertCtrl: AlertController, public geolocation: Geolocation) {
 
     this.formActivity = formBuilder.group({
-      name: ['', Validators.compose([Validators.maxLength(70), Validators.required])],
-      descricao: ['', Validators.compose([Validators.minLength(6), Validators.required])]
+      name: ['', Validators.compose([Validators.maxLength(250), Validators.required])],
+      descricao: ['', Validators.compose([Validators.minLength(6), Validators.required])],
+      dica: ['', Validators.compose([Validators.required])]
     });
   }
 
@@ -34,6 +37,7 @@ export class EditActivityPage {
     this.descricao = dataActivity.descricao;
     this.latitude = dataActivity.longitude;
     this.longitude = dataActivity.longitude;
+    this.dica = dataActivity.dica;
   }
 
 
@@ -41,11 +45,22 @@ export class EditActivityPage {
 
     let name = this.name;
     let descricao = this.descricao;
-    let latitude = this.latitude;
-    let longitude = this.longitude;
-    this.http.put('http://tcc-andre.herokuapp.com/api/coord/'+this.id, { name, latitude, longitude, descricao }).toPromise().then(rs => {
-      this.alert('Atividade atualizada com sucesso', 'Tudo Certo');
-    });
+    let dica = this.dica;
+    if (this.controlCoords ){
+      let latitude = this.latitude;
+      let longitude = this.longitude;
+      this.http.put('http://tcc-andre.herokuapp.com/api/coord/' + this.id, { name, latitude, longitude, descricao, dica }).toPromise().then(rs => {
+        this.alert('Atividade atualizada com sucesso', 'Tudo Certo');
+      });
+
+    }else{
+      
+      this.http.put('http://tcc-andre.herokuapp.com/api/coord/' + this.id, { name, descricao, dica }).toPromise().then(rs => {
+        this.alert('Atividade atualizada com sucesso', 'Tudo Certo');
+      });
+    }
+    
+    
 
   }
 
@@ -108,6 +123,7 @@ export class EditActivityPage {
 
       this.latitude = res.coords.latitude;
       this.longitude = res.coords.longitude;
+      this.controlCoords = true;
 
       loading.dismiss();
       this.alertLocation('Coordenadas coletadas com sucesso! Agora aperte no botão gravar para efetuar a atualização', 'Aviso');

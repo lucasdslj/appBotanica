@@ -7,7 +7,56 @@
 </ion-header>
 <ion-content padding>
 
+ 
+  
+  
+    <form [formGroup]="formSignUp">
+      <ion-list>
+        <ion-item>
+          <ion-label color="primary" floating>Nome</ion-label>
+  
+          <ion-input name="name" [(ngModel)]="name" formControlName="name"> </ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label color="primary" floating>Email</ion-label>
+  
+          <ion-input type="email" name="email" [(ngModel)]="email" formControlName="email"> </ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <br>
+          <ion-label color="primary" floating>Sexo</ion-label>
+          <ion-select [(ngModel)]="sex" submitText="Ok" cancelText="Cancelar" formControlName="sex" color="primary">
+            <ion-option value="masculino" color="primary">Masculino</ion-option>
+            <ion-option value="feminino" color="primary">Feminino</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <br>
+          <ion-label color="primary" floating>Tipo de Cadastro</ion-label>
+          <ion-select [(ngModel)]="type" submitText="Ok" cancelText="Cancelar" formControlName="type" color="primary">
+            <ion-option value="Professor" color="primary">Professor</ion-option>
+            <ion-option value="Aluno" color="primary">Aluno</ion-option>
+          </ion-select>
+        </ion-item>
+  
+        <ion-item>
+  
+          <ion-label color="primary" floating>Password</ion-label>
+  
+          <ion-input [type]="password_type" name="password" [(ngModel)]="password" formControlName="password" required></ion-input>
+          <button ion-button item-right (click)="togglePasswordMode()" round>mostrar </button>
+  
+        </ion-item>
+  
+      </ion-list>
+    </form>
+  
+  <button ion-button color="secondary" [disabled]="formSignUp.invalid" (click)="signUp(name, email, type, sex, password)"
+    round outline>Registrar</button>
 
-<ion-content padding>
+
+
 
 </ion-content>

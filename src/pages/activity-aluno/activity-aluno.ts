@@ -32,11 +32,15 @@ export class ActivityAlunoPage {
       this.http.post('http://tcc-andre.herokuapp.com/api/checkCoord', { id, latitude, longitude }).toPromise().then(rs => {
         let resp = rs.json();
 
-        if (resp == 'checked') {
-          this.alert('Você encontrou a planta! Atividade Realizada!', 'Parabéns!!!');
+        if (resp[0] == 'checked') {
+          this.alert('Você encontrou a planta' + this.name + ', ' + resp[1] +'. Atividade Realizada!', 'Parabéns!!!'); 
         } else {
+          if (resp[0] == 'not_but') {
+            this.alert('Você não encontrou a planta' + this.name + 'mas, encontrou: ' + resp[2] + '. ' + resp[1] , 'Parabéns!!!'); 
+
           this.alertLocation('Este não é o local da planta procurada!', 'Oh não :(');
         }
+      }
        
       });
 
