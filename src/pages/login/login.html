@@ -38,7 +38,7 @@
     <br>
     </form>
 
-    <button [disabled]="formLogin.invalid" ion-button  (click)="homeOn(typeUser)" round outline>Logar</button>
+    <button [disabled]="formLogin.invalid" ion-button  (click)="homeOn(typeUser, email, password)" round outline>Logar</button>
 
     <button ion-button color="secondary" (click)="signupOn()" round outline>Registre-se</button>
 

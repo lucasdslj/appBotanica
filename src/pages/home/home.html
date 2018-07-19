@@ -9,7 +9,7 @@
 
 <ion-content padding>
   
-  
+  <div *ngIf="homeScreenOn">
      <h3> Olá Professor João</h3>
    
   
@@ -18,5 +18,5 @@
     <button ion-button  (click)="manageActivityOn()" round full>Gerenciar Atividades</button>
    <!-- <button ion-button color="danger" (click)="homeAlunoPageOn()" round full>Home Aluno</button> -->
 
-
+</div>
 </ion-content>

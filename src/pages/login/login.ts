@@ -15,7 +15,7 @@ import { Storage } from '@ionic/storage';
 })
 export class LoginPage {
   formLogin:any;
-  userData:any;
+  userData = [];
   password_type: String = 'password';
   
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public http: Http,
@@ -38,7 +38,7 @@ export class LoginPage {
     console.log(this.password_type);
   }
 
-  homeOn(typeUser){
+  homeOn2(typeUser){
     if (typeUser == 'Professor' ) {
       this.navCtrl.setRoot(HomePage);
     }else{
@@ -53,7 +53,7 @@ export class LoginPage {
     this.navCtrl.push(SignUpPage);
   }
 
-  homeOn2(email, password, type){
+ homeOn(email, password, type){
 
    
 
@@ -71,6 +71,8 @@ export class LoginPage {
       this.userData.push(response.json());
 
       console.log(this.userData);
+setTimeout(() => {
+  
 
       if (this.userData[0] != "err") {
 
@@ -118,6 +120,8 @@ export class LoginPage {
 
 
       }
+
+}, 1500);
   
     });
 

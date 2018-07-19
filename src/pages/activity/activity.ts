@@ -98,7 +98,7 @@ export class ActivityPage {
 
   createNewActivity(name, descricao, dica, latitude, longitude) {
     
-      this.http.post('http://tcc-andre.herokuapp.com/api/coord', { name, latitude, longitude, descricao , dica}).toPromise().then(rs => {
+      this.http.post('http://tcc-andre.herokuapp.com/api/coord', { name, latitude, longitude, descricao}).toPromise().then(rs => {
         this.alert('Atividade criada com sucesso', 'Aviso');
     });
   }

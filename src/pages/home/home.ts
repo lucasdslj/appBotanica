@@ -26,7 +26,7 @@ export class HomePage {
     
   }
 
-  tt() {
+  ionViewDidLoad() {
     let name; // auxiliar para envio na requisição que não aceita variavel global
 
     //  this.storage.remove('user_name');
